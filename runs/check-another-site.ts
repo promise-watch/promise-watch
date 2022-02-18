@@ -10,7 +10,6 @@ export async function run() {
   if (status > 399) {
     throw new Error(`Failed with response code [${status}].`);
   }
-
   // await page.screenshot({ path: `tmp/screenshots/${new Date().toISOString()}-${basename(__filename)}.jpg` });
 
   await page.close({ runBeforeUnload: true });

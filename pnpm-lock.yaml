@@ -1,19 +1,27 @@
 lockfileVersion: 5.3
 
 specifiers:
+  '@types/glob': ^7.2.0
   '@types/node': ^17.0.18
+  dotenv: ^16.0.0
+  glob: ^7.2.0
   notifme-sdk: ^1.11.0
   playwright: ^1.19.1
+  pushover-js: ^1.3.1
   rxjs: ^7.5.4
   ts-node: ^10.5.0
   typescript: ^4.5.5
 
 dependencies:
+  dotenv: 16.0.0
+  glob: 7.2.0
   notifme-sdk: 1.11.0
   playwright: 1.19.1
+  pushover-js: 1.3.1
   rxjs: 7.5.4
 
 devDependencies:
+  '@types/glob': 7.2.0
   '@types/node': 17.0.18
   ts-node: 10.5.0_f3bd4037939c2ed2942ba074291f8ef2
   typescript: 4.5.5
@@ -71,6 +79,17 @@ packages:
 
   /@tsconfig/node16/1.0.2:
     resolution: {integrity: sha512-eZxlbI8GZscaGS7kkc/trHTT5xgrjH3/1n2JDwusC9iahPKWMRvRjJSAN5mCXviuTGQ/lHnhvv8Q1YTpnfz9gA==}
+    dev: true
+
+  /@types/glob/7.2.0:
+    resolution: {integrity: sha512-ZUxbzKl0IfJILTS6t7ip5fQQM/J3TJYubDm3nMbgubNNYS62eXeUpoLUC8/7fJNiFYHTrGPQn7hspDUzIHX3UA==}
+    dependencies:
+      '@types/minimatch': 3.0.5
+      '@types/node': 17.0.18
+    dev: true
+
+  /@types/minimatch/3.0.5:
+    resolution: {integrity: sha512-Klz949h02Gz2uZCMGwDUSDS1YBlTdDDgbWHi+81l29tQALUtvz4rAYi5uoVhE5Lagoq6DeqAUlbrHvW/mXDgdQ==}
     dev: true
 
   /@types/node/17.0.18:
@@ -304,6 +323,11 @@ packages:
     resolution: {integrity: sha512-58lmxKSA4BNyLz+HHMUzlOEpg09FV+ev6ZMe3vJihgdxzgcwZ8VoEEPmALCZG9LmqfVoNMMKpttIYTVG6uDY7A==}
     engines: {node: '>=0.3.1'}
     dev: true
+
+  /dotenv/16.0.0:
+    resolution: {integrity: sha512-qD9WU0MPM4SWLPJy/r2Be+2WgQj8plChsyrCNQzW/0WjvcJQiKQJ9mH3ZgB3fxbUUxgc/11ZJ0Fi5KiimWGz2Q==}
+    engines: {node: '>=12'}
+    dev: false
 
   /ecc-jsbn/0.1.2:
     resolution: {integrity: sha1-OoOpBOVDUyh4dMVkt1SThoSamMk=}
@@ -838,6 +862,11 @@ packages:
   /punycode/2.1.1:
     resolution: {integrity: sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==}
     engines: {node: '>=6'}
+    dev: false
+
+  /pushover-js/1.3.1:
+    resolution: {integrity: sha512-KSFtnyG7CdZHfo+FZOiolsLvuqy1i96SJioBK3SN/15hQZscxtlApnjMI19Yez+qNap9OzkCrlT2gJKxrmFMIw==}
+    engines: {node: '>= 0.6.0'}
     dev: false
 
   /qs/6.5.3:
