@@ -1,5 +1,5 @@
 {
-  "name": "playwright-notify-me",
+  "name": "@jmondi/js-watcher",
   "scripts": {
     "dev": "ts-node src/main.ts"
   },
