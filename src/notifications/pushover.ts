@@ -6,5 +6,11 @@ const pushover = new Pushover(
 );
 
 export async function sendNotification(title: string, message: string) {
-  return pushover.send(title, message);
-};
+  console.error(title, message);
+
+  if (process.env.NODE_ENV === "production") {
+    return pushover.send(title, message);
+  }
+
+  return;
+}

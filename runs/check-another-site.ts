@@ -1,5 +1,9 @@
 import { chromium } from "playwright";
 
+export const options = {
+  interval: 5000,
+};
+
 export async function run() {
   const browser = await chromium.launch();
   const page = await browser.newPage();
