@@ -1,6 +1,6 @@
 # js-watcher
 
-Write playwright scripts, set options, send notifications.
+Write playwright scripts, set options, send notifications. Checkout the [example dir](./example) to see a working example.
 
 ## Getting Started
 
