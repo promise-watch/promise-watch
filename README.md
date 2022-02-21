@@ -1,6 +1,8 @@
 # js-watcher
 
-Write playwright scripts, set options, send notifications. Checkout the [example dir](./example) to see a working example.
+An E2E monitor that runs Playwright to monitor your frontend application.
+
+Create a `run` directory where you write playwright scripts, set options, then send notifications on errors. Checkout the [example dir](./example) to see a working example.
 
 ## Getting Started
 
