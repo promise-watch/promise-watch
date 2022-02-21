@@ -4,9 +4,14 @@ import { catchError, defer, delay, repeatWhen } from "rxjs";
 import { glob } from "./utils/glob-promise";
 import { Notifier } from "./notifications";
 
+export type RunPage = {
+  options: RunOptions;
+  run(): Promise<void>;
+}
+
 export type RunOptions = {
-  interval: number;
   errorNotifiers?: Notifier[];
+  interval: number;
 }
 
 export type ExecuteOptions = {
@@ -18,14 +23,11 @@ export type ExecuteOptions = {
 export async function executeJobs({ dir, errorNotifiers = [], globPath = "runs/**/*.{js,ts}" }: ExecuteOptions) {
   const files = await glob(globPath);
   const imports = await Promise.all(files.map(f => import(resolve(dir, "../", f))));
-  const runs = imports.map((r, idx) => {
-    return {
-      name: files[idx],
-      run: r.run,
-      options: r.options,
-      errorNotifiers: r.errorNotifiers
-    }
-  });
+  const runs = imports.map((r: RunPage, idx) => ({
+    name: files[idx],
+    run: r.run,
+    options: r.options,
+  }));
 
   async function sendErrorNotifications(title: string, body: string, customNotifiers?: Notifier[]) {
     for (const notify of (customNotifiers ?? errorNotifiers)) {
@@ -33,11 +35,11 @@ export async function executeJobs({ dir, errorNotifiers = [], globPath = "runs/*
     }
   }
 
-  for (const { name, run, options, errorNotifiers } of runs) {
+  for (const { name, run, options } of runs) {
     defer(() => run())
       .pipe(
         repeatWhen(next => next.pipe(delay(options.interval * 1000))),
-        catchError(err => sendErrorNotifications(name, err.message, errorNotifiers)),
+        catchError(err => sendErrorNotifications(name, err.message, options.errorNotifiers)),
       )
       .subscribe();
   }
