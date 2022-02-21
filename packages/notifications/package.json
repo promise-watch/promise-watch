@@ -1,0 +1,12 @@
+{
+  "name": "@js-watcher/notify",
+  "version": "0.0.1",
+  "main": "src/main.ts",
+  "scripts": {
+    "dev": "ts-node packages/main/src/main.ts"
+  },
+  "author": "Jason Raimondi <jason@raimondi.us> (https://jasonraimondi.com)",
+  "dependencies": {
+    "pushover-js": "^1.3.1"
+  }
+}

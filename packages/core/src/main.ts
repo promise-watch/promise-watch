@@ -1,10 +1,9 @@
 import "dotenv/config";
 
+import { resolve } from "path";
 import { catchError, defer, delay, repeatWhen } from "rxjs";
 
 import { glob } from "./utils/glob-promise";
-
-import { resolve } from "path";
 
 const sendNotification = async (title: string, message: string) => console.log(title, message);
 

@@ -16,7 +16,7 @@ pnpm init -y
 Install dependencies
 
 ```bash
-pnpm add @js-watcher/core playwright
+pnpm add @js-watcher/core playwright rxjs
 pnpm add -D typescript ts-node @types/node
 ```
 
