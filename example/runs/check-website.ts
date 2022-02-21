@@ -1,7 +1,7 @@
 import { chromium } from "playwright";
 
 export const options = {
-  interval: 7500,
+  interval: 7.5,
 };
 
 export async function run() {
@@ -19,4 +19,6 @@ export async function run() {
 
   await page.close({ runBeforeUnload: true });
   await browser.close();
+
+  console.log(`success: ${__filename}`);
 }

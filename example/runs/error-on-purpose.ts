@@ -1,5 +1,5 @@
 export const options = {
-  interval: 4000,
+  interval: 4,
 };
 
 export async function run() {

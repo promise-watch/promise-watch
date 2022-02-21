@@ -3,6 +3,7 @@
     "target": "es2017",
     "module": "commonjs",
     "lib": ["dom", "es6", "es2017", "esnext.asynciterable"],
+    "declaration": true,
     "skipLibCheck": true,
     "sourceMap": true,
     "outDir": "./dist",
@@ -24,7 +25,5 @@
     "baseUrl": "."
   },
   "exclude": ["node_modules"],
-  "include": [
-    "./packages/main/src/**/*.ts"
-  ]
+  "include": ["./src/**/*.ts"]
 }

@@ -1,0 +1,14 @@
+{
+  "name": "example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "ts-node src/main.ts"
+  },
+  "author": "Jason Raimondi",
+  "dependencies": {
+    "@js-watcher/core": "workspace:^0.0.1",
+    "playwright": "^1.19.1"
+  }
+}
