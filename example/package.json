@@ -9,6 +9,8 @@
   "author": "Jason Raimondi",
   "dependencies": {
     "@js-watcher/core": "workspace:^0.0.1",
+    "@js-watcher/pushover": "workspace:^0.0.1",
+    "dotenv": "^16.0.0",
     "playwright": "^1.19.1"
   }
 }

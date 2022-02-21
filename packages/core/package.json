@@ -1,17 +1,13 @@
 {
   "name": "@js-watcher/core",
   "version": "0.0.1",
-  "main": "src/main.ts",
-  "scripts": {
-    "dev": "ts-node packages/main/src/main.ts"
-  },
+  "main": "src/index.ts",
   "author": "Jason Raimondi <jason@raimondi.us> (https://jasonraimondi.com)",
   "peerDependencies": {
     "playwright": "^1.19.1",
     "rxjs": "^7.5.4"
   },
   "dependencies": {
-    "dotenv": "^16.0.0",
     "glob": "^7.2.0"
   },
   "devDependencies": {

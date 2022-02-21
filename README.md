@@ -77,6 +77,44 @@ And go
 pnpm start
 ```
 
+## Notifiers
+
+Send notifications when errors occur.
+
+## Pushover
+
+```bash
+pnpm add @js-watcher/pushover
+```
+
+Then in your execute options, add the `PushoverNotifier` to your `errorNotifiers` array.
+
+```typescript
+import { PushoverNotifier } from "@js-watcher/pushover";
+
+const options: ExecuteOptions = {
+  dir: __dirname,
+  errorNotifiers: [
+    new PushoverNotifier(process.env.PUSHOVER_USER_KEY, process.env.PUSHOVER_API_KEY),
+  ]
+}
+```
+
+### Custom Notifiers
+
+Implement the Notifier type and you're good to go. See the [pushover notifier](./packages/pushover/src/main.ts) for a working example. Feel free to submit a PR if you want to add support for a custom notifier.
+
+```typescript
+export type SendOptions = {
+  title: string;
+  body: string;
+}
+
+export type Notifier = {
+  send(options: SendOptions): Promise<void>;
+}
+```
+
 ## Caveats
 
 I have a feeling this isnt gonna scale nicely. I am planning on only using this for ~5 runs so we'll see how it goes.
