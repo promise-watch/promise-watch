@@ -1,6 +1,7 @@
 import { chromium } from "playwright";
+import { RunOptions } from "@js-watcher/core";
 
-export const options = {
+export const options: RunOptions = {
   interval: 10,
 };
 

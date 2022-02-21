@@ -1,4 +1,6 @@
-export const options = {
+import { RunOptions } from "@js-watcher/core";
+
+export const options: RunOptions = {
   interval: 3.75,
 };
 
