@@ -19,5 +19,4 @@ export async function run() {
 
   await page.close({ runBeforeUnload: true });
   await browser.close();
-  console.log("RUNS END");
 }
