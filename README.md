@@ -2,6 +2,8 @@
 
 An E2E monitor that runs Playwright to monitor your frontend application.
 
+Write whatever promise based checks you want, and if an error gets thrown, you can send notifications using several different notifiers. 
+
 Create a `run` directory where you write playwright scripts, set options, then send notifications on errors. Checkout the [example dir](./example) to see a working example.
 
 ## Getting Started
@@ -85,23 +87,29 @@ pnpm start
 
 ## Notifiers
 
-Send notifications when errors occur.
+Send notifications when errors occur using the following providers:
 
-## Pushover
+* [Pushover](./packages/pushover)
+* [Slack](./packages/slack)
+* [SMTP](./packages/smtp)
 
 ```bash
-pnpm add @js-watcher/pushover
+pnpm add @js-watcher/pushover @js-watcher/slack @js-watcher/smtp
 ```
 
 Then in your execute options, add the `PushoverNotifier` to your `errorNotifiers` array.
 
 ```typescript
 import { PushoverNotifier } from "@js-watcher/pushover";
+import { SlackNotifier } from "@js-watcher/slack";
+import { SmtpNotifier } from "@js-watcher/smtp";
 
 const options: ExecuteOptions = {
-  dir: __dirname,
+  ...,
   errorNotifiers: [
     new PushoverNotifier(process.env.PUSHOVER_USER_KEY, process.env.PUSHOVER_API_KEY),
+    new SlackNotifier(process.env.SLACK_WEBHOOK_URL),
+    new SmtpNotifier(...),
   ]
 }
 ```
