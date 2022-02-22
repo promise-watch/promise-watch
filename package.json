@@ -4,8 +4,8 @@
   "license": "MIT",
   "author": "Jason Raimondi <jason@raimondi.us> (https://jasonraimondi.com)",
   "scripts": {
-    "build": "pnpm run build --recursive --filter=\"@promise-watch/*\"",
-    "pub": "pnpm run publish --recursive --filter=\"@promise-watch/*\"",
+    "build": "pnpm run build --recursive",
+    "pub": "pnpm publish --recursive --filter=\"@promise-watch/*\" --access=public",
     "format": "prettier --write packages/**/src --write example/src --write example/runs"
   },
   "devDependencies": {
