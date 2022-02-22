@@ -6,18 +6,18 @@ export type RunPage = {
   name?: string;
   options: RunOptions;
   run(): Promise<void>;
-}
+};
 
 export type RunOptions = {
   errorNotifiers?: Notifier[];
   interval: number;
-}
+};
 
 export type ExecuteOptions = {
   dir: string;
   globPath?: string;
   errorNotifiers?: Notifier[];
-}
+};
 
 function sleep(ms: number) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -35,7 +35,7 @@ export async function executeJobs({ dir, errorNotifiers = [], globPath = "runs/*
   }));
 
   async function sendErrorNotifications(title: string, body: string, customNotifiers?: Notifier[]) {
-    for (const notify of (customNotifiers ?? errorNotifiers)) {
+    for (const notify of customNotifiers ?? errorNotifiers) {
       await notify.send({ title, body });
     }
   }

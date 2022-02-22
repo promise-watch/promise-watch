@@ -9,6 +9,6 @@ export class PushoverNotifier implements Notifier {
   }
 
   async send({ title, body }: SendOptions): Promise<void> {
-    await this.pushover.send(title, body)
+    await this.pushover.send(title, body);
   }
 }
