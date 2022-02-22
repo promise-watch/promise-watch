@@ -1,0 +1,13 @@
+{
+  "name": "@js-watcher/slack",
+  "version": "0.0.1",
+  "main": "src/main.ts",
+  "scripts": {
+    "dev": "ts-node src/main.ts"
+  },
+  "author": "Jason Raimondi <jason@raimondi.us> (https://jasonraimondi.com)",
+  "dependencies": {
+    "@js-watcher/core": "workspace:^0.0.1",
+    "@slack/webhook": "^6.1.0"
+  }
+}
