@@ -5,8 +5,7 @@
   "author": "Jason Raimondi <jason@raimondi.us> (https://jasonraimondi.com)",
   "scripts": {
     "build": "tsc",
-    "prepublish": "pnpm build",
-    "publish": "pnpm publish --access=public"
+    "prepublish": "pnpm build"
   },
   "files": [
     "dist",
