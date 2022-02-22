@@ -16,17 +16,17 @@ importers:
 
   example:
     specifiers:
-      '@js-watcher/core': workspace:^0.0.1
-      '@js-watcher/pushover': workspace:^0.0.1
-      '@js-watcher/slack': workspace:^0.0.1
-      '@js-watcher/smtp': workspace:^0.0.1
+      '@promise-watch/core': workspace:^0.0.1
+      '@promise-watch/pushover': workspace:^0.0.1
+      '@promise-watch/slack': workspace:^0.0.1
+      '@promise-watch/smtp': workspace:^0.0.1
       dotenv: ^16.0.0
       playwright: ^1.19.1
     dependencies:
-      '@js-watcher/core': link:../packages/core
-      '@js-watcher/pushover': link:../packages/pushover
-      '@js-watcher/slack': link:../packages/slack
-      '@js-watcher/smtp': link:../packages/smtp
+      '@promise-watch/core': link:../packages/core
+      '@promise-watch/pushover': link:../packages/pushover
+      '@promise-watch/slack': link:../packages/slack
+      '@promise-watch/smtp': link:../packages/smtp
       dotenv: 16.0.0
       playwright: 1.19.1
 
@@ -45,27 +45,27 @@ importers:
 
   packages/pushover:
     specifiers:
-      '@js-watcher/core': workspace:^0.0.1
+      '@promise-watch/core': workspace:^0.0.1
       pushover-js: ^1.3.1
     dependencies:
-      '@js-watcher/core': link:../core
+      '@promise-watch/core': link:../core
       pushover-js: 1.3.1
 
   packages/slack:
     specifiers:
-      '@js-watcher/core': workspace:^0.0.1
+      '@promise-watch/core': workspace:^0.0.1
       '@slack/webhook': ^6.1.0
     dependencies:
-      '@js-watcher/core': link:../core
+      '@promise-watch/core': link:../core
       '@slack/webhook': 6.1.0
 
   packages/smtp:
     specifiers:
-      '@js-watcher/core': workspace:^0.0.1
+      '@promise-watch/core': workspace:^0.0.1
       '@types/nodemailer': ^6.4.4
       nodemailer: ^6.7.2
     dependencies:
-      '@js-watcher/core': link:../core
+      '@promise-watch/core': link:../core
       nodemailer: 6.7.2
     devDependencies:
       '@types/nodemailer': 6.4.4

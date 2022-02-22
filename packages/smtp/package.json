@@ -1,5 +1,5 @@
 {
-  "name": "@js-watcher/smtp",
+  "name": "@promise-watch/smtp",
   "version": "0.0.1",
   "main": "src/main.ts",
   "author": "Jason Raimondi <jason@raimondi.us> (https://jasonraimondi.com)",
@@ -10,7 +10,7 @@
   },
   "files": ["dist", "src"],
   "dependencies": {
-    "@js-watcher/core": "workspace:^0.0.1",
+    "@promise-watch/core": "workspace:^0.0.1",
     "nodemailer": "^6.7.2"
   },
   "devDependencies": {

@@ -1,5 +1,5 @@
 {
-  "name": "@js-watcher/slack",
+  "name": "@promise-watch/slack",
   "version": "0.0.1",
   "main": "src/index.ts",
   "author": "Jason Raimondi <jason@raimondi.us> (https://jasonraimondi.com)",
@@ -10,7 +10,7 @@
   },
   "files": ["dist", "src"],
   "dependencies": {
-    "@js-watcher/core": "workspace:^0.0.1",
+    "@promise-watch/core": "workspace:^0.0.1",
     "@slack/webhook": "^6.1.0"
   },
   "publishConfig": {

@@ -1,4 +1,4 @@
-import { RunOptions } from "@js-watcher/core";
+import { RunOptions } from "@promise-watch/core";
 
 export const options: RunOptions = {
   interval: 4,

@@ -1,5 +1,5 @@
 {
-  "name": "@js-watcher/core",
+  "name": "@promise-watch/core",
   "version": "0.0.1",
   "main": "src/index.ts",
   "author": "Jason Raimondi <jason@raimondi.us> (https://jasonraimondi.com)",

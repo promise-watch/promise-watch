@@ -1,4 +1,4 @@
-import { Notifier, SendOptions } from "@js-watcher/core";
+import { Notifier, SendOptions } from "@promise-watch/core";
 import { IncomingWebhook, IncomingWebhookSendArguments } from "@slack/webhook";
 
 export class SlackNotifier implements Notifier {

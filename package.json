@@ -1,12 +1,12 @@
 {
-  "name": "js-watcher",
+  "name": "promise-watch",
   "private": true,
   "license": "MIT",
   "version": "1.0.0",
   "author": "Jason Raimondi <jason@raimondi.us> (https://jasonraimondi.com)",
   "scripts": {
-    "build": "pnpm run build --recursive --filter=\"@js-watcher/*\"",
-    "pub": "pnpm run publish --recursive --filter=\"@js-watcher/*\"",
+    "build": "pnpm run build --recursive --filter=\"@promise-watch/*\"",
+    "pub": "pnpm run publish --recursive --filter=\"@promise-watch/*\"",
     "format": "prettier --write packages/**/src --write example/src --write example/runs"
   },
   "devDependencies": {

@@ -1,8 +1,8 @@
 import "dotenv/config";
 
-import { ConsoleNotifier, executeJobs, ExecuteOptions } from "@js-watcher/core";
-// import { PushoverNotifier } from "@js-watcher/pushover";
-// import { SlackNotifier } from "@js-watcher/slack";
+import { ConsoleNotifier, executeJobs, ExecuteOptions } from "@promise-watch/core";
+// import { PushoverNotifier } from "@promise-watch/pushover";
+// import { SlackNotifier } from "@promise-watch/slack";
 
 const options: ExecuteOptions = {
   dir: __dirname,

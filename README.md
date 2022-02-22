@@ -20,7 +20,7 @@ pnpm init -y
 Install dependencies
 
 ```bash
-pnpm add @js-watcher/core playwright
+pnpm add @promise-watch/core playwright
 pnpm add -D typescript ts-node @types/node
 ```
 
@@ -94,15 +94,15 @@ Send notifications when errors occur using the following providers:
 * [SMTP](./packages/smtp)
 
 ```bash
-pnpm add @js-watcher/pushover @js-watcher/slack @js-watcher/smtp
+pnpm add @promise-watch/pushover @promise-watch/slack @promise-watch/smtp
 ```
 
 Then in your execute options, add the `PushoverNotifier` to your `errorNotifiers` array.
 
 ```typescript
-import { PushoverNotifier } from "@js-watcher/pushover";
-import { SlackNotifier } from "@js-watcher/slack";
-import { SmtpNotifier } from "@js-watcher/smtp";
+import { PushoverNotifier } from "@promise-watch/pushover";
+import { SlackNotifier } from "@promise-watch/slack";
+import { SmtpNotifier } from "@promise-watch/smtp";
 
 const options: ExecuteOptions = {
   ...,

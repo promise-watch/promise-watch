@@ -1,4 +1,4 @@
-import { Notifier, SendOptions } from "@js-watcher/core";
+import { Notifier, SendOptions } from "@promise-watch/core";
 import { Pushover } from "pushover-js";
 
 export class PushoverNotifier implements Notifier {
