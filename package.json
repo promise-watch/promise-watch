@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "author": "Jason Raimondi <jason@raimondi.us> (https://jasonraimondi.com)",
   "scripts": {
+    "build": "pnpm run build --recursive",
+    "publish": "pnpm run publish --recursive",
     "format": "prettier --write {src,runs}"
   },
   "devDependencies": {
