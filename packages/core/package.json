@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "prepublish": "pnpm build",
-    "publish": "pnpm publish"
+    "publish": "pnpm publish --access=public"
   },
   "files": ["dist", "src"],
   "peerDependencies": {
@@ -21,6 +21,8 @@
     "prettier": "^2.5.1"
   },
   "publishConfig": {
-    "main": "src/index.js"
+    "main": "dist/index.js",
+    "private": false,
+    "license": "MIT"
   }
 }

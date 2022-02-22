@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "prepublish": "pnpm build",
-    "publish": "pnpm publish"
+    "publish": "pnpm publish --access=public"
   },
   "files": ["dist", "src"],
   "dependencies": {
@@ -15,5 +15,10 @@
   },
   "devDependencies": {
     "@types/nodemailer": "^6.4.4"
+  },
+  "publishConfig": {
+    "main": "dist/index.js",
+    "private": false,
+    "license": "MIT"
   }
 }
