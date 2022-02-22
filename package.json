@@ -2,7 +2,6 @@
   "name": "promise-watch",
   "private": true,
   "license": "MIT",
-  "version": "1.0.0",
   "author": "Jason Raimondi <jason@raimondi.us> (https://jasonraimondi.com)",
   "scripts": {
     "build": "pnpm run build --recursive --filter=\"@promise-watch/*\"",
