@@ -1,4 +1,4 @@
-# js-watcher
+# Promise Watch
 
 An E2E monitor that runs Playwright to monitor your frontend application.
 

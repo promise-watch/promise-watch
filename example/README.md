@@ -1,4 +1,4 @@
-# JS Watcher Example
+# Promise Watch Example
 
 Checkout and add/edit your own custom [runs](./runs). See the [entrypoint](./src/main.ts).
 
