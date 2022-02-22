@@ -1,6 +1,6 @@
 {
   "name": "@promise-watch/core",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "src/index.ts",
   "author": "Jason Raimondi <jason@raimondi.us> (https://jasonraimondi.com)",
   "scripts": {
@@ -8,7 +8,10 @@
     "prepublish": "pnpm build",
     "publish": "pnpm publish --access=public"
   },
-  "files": ["dist", "src"],
+  "files": [
+    "dist",
+    "src"
+  ],
   "peerDependencies": {
     "playwright": "^1.19.1"
   },
