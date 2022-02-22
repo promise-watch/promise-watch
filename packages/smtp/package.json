@@ -1,6 +1,6 @@
 {
   "name": "@promise-watch/smtp",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "src/main.ts",
   "author": "Jason Raimondi <jason@raimondi.us> (https://jasonraimondi.com)",
   "scripts": {
