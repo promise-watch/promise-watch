@@ -5,8 +5,8 @@
   "version": "1.0.0",
   "author": "Jason Raimondi <jason@raimondi.us> (https://jasonraimondi.com)",
   "scripts": {
-    "build": "pnpm run build --recursive",
-    "pub": "pnpm run publish --recursive",
+    "build": "pnpm run build --recursive --filter=\"@js-watcher/*\"",
+    "pub": "pnpm run publish --recursive --filter=\"@js-watcher/*\"",
     "format": "prettier --write packages/**/src --write example/src --write example/runs"
   },
   "devDependencies": {
