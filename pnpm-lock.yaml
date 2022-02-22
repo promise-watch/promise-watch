@@ -36,14 +36,12 @@ importers:
       glob: ^7.2.0
       playwright: ^1.19.1
       prettier: ^2.5.1
-      rxjs: ^7.5.4
     dependencies:
       glob: 7.2.0
     devDependencies:
       '@types/glob': 7.2.0
       playwright: 1.19.1
       prettier: 2.5.1
-      rxjs: 7.5.4
 
   packages/pushover:
     specifiers:
@@ -420,12 +418,6 @@ packages:
     dependencies:
       glob: 7.2.0
 
-  /rxjs/7.5.4:
-    resolution: {integrity: sha512-h5M3Hk78r6wAheJF0a5YahB1yRQKCsZ4MsGdZ5O9ETbVtjPcScGfrMmoOq7EBsCRzd4BDkvDJ7ogP8Sz5tTFiQ==}
-    dependencies:
-      tslib: 2.3.1
-    dev: true
-
   /signal-exit/3.0.7:
     resolution: {integrity: sha512-wnD2ZE+l+SPC/uoS0vXeE9L1+0wuaMqKlfz9AMUo38JsyLSBWSFcHR1Rri62LZc12vLr1gb3jl7iwQhgwpAbGQ==}
 
@@ -485,10 +477,6 @@ packages:
       typescript: 4.5.5
       v8-compile-cache-lib: 3.0.0
       yn: 3.1.1
-    dev: true
-
-  /tslib/2.3.1:
-    resolution: {integrity: sha512-77EbyPPpMz+FRFRuAFlWMtmgUWGe9UOG2Z25NqCwiIjRhOf5iKGuzSe5P2w1laq+FkRy4p+PCuVkJSGkzTEKVw==}
     dev: true
 
   /typescript/4.5.5:

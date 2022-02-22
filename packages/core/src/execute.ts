@@ -1,10 +1,9 @@
 import { resolve } from "path";
-import { catchError, defer, delay, repeatWhen } from "rxjs";
-
 import { glob } from "./utils/glob-promise";
 import { Notifier } from "./notifications";
 
 export type RunPage = {
+  name?: string;
   options: RunOptions;
   run(): Promise<void>;
 }
@@ -20,11 +19,17 @@ export type ExecuteOptions = {
   errorNotifiers?: Notifier[];
 }
 
+function sleep(ms: number) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+let alive = true;
+
 export async function executeJobs({ dir, errorNotifiers = [], globPath = "runs/**/*.{js,ts}" }: ExecuteOptions) {
   const files = await glob(globPath);
   const imports = await Promise.all(files.map(f => import(resolve(dir, "../", f))));
   const runs = imports.map((r: RunPage, idx) => ({
-    name: files[idx],
+    name: r.name ?? files[idx],
     run: r.run,
     options: r.options,
   }));
@@ -35,12 +40,24 @@ export async function executeJobs({ dir, errorNotifiers = [], globPath = "runs/*
     }
   }
 
-  for (const { name, run, options } of runs) {
-    defer(() => run())
-      .pipe(
-        repeatWhen(next => next.pipe(delay(options.interval * 1000))),
-        catchError(err => sendErrorNotifications(name, err.message, options.errorNotifiers)),
-      )
-      .subscribe();
+  async function extracted({ name, run, options }: Required<RunPage>) {
+    try {
+      await run();
+    } catch (err) {
+      await sendErrorNotifications(name, err.message, options.errorNotifiers);
+    }
+    await sleep(options.interval * 1000);
+
+    if (alive) await extracted({ name, run, options });
   }
+
+  await Promise.allSettled(runs.map(run => extracted(run)));
 }
+
+function shutdown() {
+  alive = false;
+  process.exit(0);
+}
+
+process.on("SIGINT", shutdown);
+process.on("SIGTERM", shutdown);

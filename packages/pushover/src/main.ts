@@ -9,10 +9,6 @@ export class PushoverNotifier implements Notifier {
   }
 
   async send({ title, body }: SendOptions): Promise<void> {
-    console.log(title, body);
-
-    if (process.env.NODE_ENV === "production") {
-      await this.pushover.send(title, body)
-    }
+    await this.pushover.send(title, body)
   }
 }

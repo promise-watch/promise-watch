@@ -4,8 +4,7 @@
   "main": "src/index.ts",
   "author": "Jason Raimondi <jason@raimondi.us> (https://jasonraimondi.com)",
   "peerDependencies": {
-    "playwright": "^1.19.1",
-    "rxjs": "^7.5.4"
+    "playwright": "^1.19.1"
   },
   "dependencies": {
     "glob": "^7.2.0"
@@ -13,7 +12,6 @@
   "devDependencies": {
     "@types/glob": "^7.2.0",
     "playwright": "^1.19.1",
-    "prettier": "^2.5.1",
-    "rxjs": "^7.5.4"
+    "prettier": "^2.5.1"
   }
 }
