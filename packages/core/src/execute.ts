@@ -46,9 +46,11 @@ export async function executeJobs({ dir, errorNotifiers = [], globPath = "runs/*
     } catch (err) {
       await sendErrorNotifications(name, err.message, options.errorNotifiers);
     }
-    await sleep(options.interval * 1000);
 
-    if (alive) await extracted({ name, run, options });
+    if (alive) {
+      await sleep(options.interval * 1000);
+      await extracted({ name, run, options });
+    }
   }
 
   await Promise.allSettled(runs.map(run => extracted(run)));
