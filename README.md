@@ -18,7 +18,7 @@ pnpm init -y
 Install dependencies
 
 ```bash
-pnpm add @js-watcher/core playwright rxjs
+pnpm add @js-watcher/core playwright
 pnpm add -D typescript ts-node @types/node
 ```
 
@@ -53,12 +53,18 @@ export async function run() {
 Add an entrypoint
 
 ```typescript
-import { executeJobs } from "@js-watcher/core";
+const options: ExecuteOptions = {
+  dir: __dirname,
+  errorNotifiers: [
+    // the ConsoleNotifier logs errors to the console
+    new ConsoleNotifier(),
+  ],
+};
 
-executeJobs("runs/**/*.ts", __dirname).catch(err => {
+executeJobs(options).catch(err => {
   console.error(err);
   process.exit(1);
-})
+});
 ```
 
 And a run script
