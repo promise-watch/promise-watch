@@ -1,12 +1,11 @@
 {
   "name": "@promise-watch/core",
-  "version": "0.0.5",
+  "version": "0.0.7",
   "main": "src/index.ts",
   "author": "Jason Raimondi <jason@raimondi.us> (https://jasonraimondi.com)",
   "scripts": {
-    "prebuild": "rm -rf ./dist",
     "build": "tsc",
-    "prepublish": "pnpm build"
+    "prepublish": "rm -rf ./dist && pnpm build"
   },
   "files": [
     "dist",

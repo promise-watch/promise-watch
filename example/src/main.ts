@@ -6,7 +6,7 @@ import { ConsoleNotifier, executeJobs, ExecuteOptions } from "@promise-watch/cor
 
 const options: ExecuteOptions = {
   dir: __dirname,
-  errorNotifiers: [
+  notifiers: [
     new ConsoleNotifier(),
     // new PushoverNotifier(process.env.PUSHOVER_USER_KEY!, process.env.PUSHOVER_API_KEY!),
     // new SlackNotifier(process.env.SLACK_WEBHOOK_URL!),

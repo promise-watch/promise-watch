@@ -58,7 +58,7 @@ async function recursiveRun(page: Required<RunPage>, globalNotifiers: Notifier[]
       const message = `Run is back online! was down for ${millisecondsToStr(errorStartTime.getTime())}`;
       await sendNotifications(name, message, notifiers);
     }
-  } catch (err) {
+  } catch (err: any) {
     // if we have already notified about the error,
     // wait until success before sending another notification
     if (!errorStartTime) {

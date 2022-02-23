@@ -1,19 +1,18 @@
 {
   "name": "@promise-watch/smtp",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "main": "src/main.ts",
   "author": "Jason Raimondi <jason@raimondi.us> (https://jasonraimondi.com)",
   "scripts": {
-    "prebuild": "rm -rf ./dist",
     "build": "tsc",
-    "prepublish": "pnpm build"
+    "prepublish": "rm -rf ./dist && pnpm build"
   },
   "files": [
     "dist",
     "src"
   ],
   "dependencies": {
-    "@promise-watch/core": "workspace:^0.0.4",
+    "@promise-watch/core": "workspace:^0.0.7",
     "nodemailer": "^6.7.2"
   },
   "devDependencies": {

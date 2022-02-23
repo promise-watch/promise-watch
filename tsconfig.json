@@ -1,26 +1,34 @@
 {
   "compilerOptions": {
-    "target": "es2017",
+    "target": "es2019",
     "module": "commonjs",
-    "lib": ["dom", "es6", "es2017", "esnext.asynciterable"],
-    "skipLibCheck": true,
-    "sourceMap": true,
-    "outDir": "./dist",
-    "moduleResolution": "node",
-    "removeComments": true,
+    "lib": ["es2019"],
+    "outDir": "dist",
+    "declaration": true,
+
+    "strict": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
     "strictFunctionTypes": true,
+    "strictBindCallApply": true,
     "noImplicitThis": true,
+    "alwaysStrict": true,
+
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    "allowSyntheticDefaultImports": true,
+
+    "moduleResolution": "node",
     "esModuleInterop": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
     "resolveJsonModule": true,
-    "baseUrl": "."
+
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "removeComments": true,
+    "sourceMap": true
   }
 }
