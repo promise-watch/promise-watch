@@ -1,9 +1,10 @@
 {
   "name": "@promise-watch/slack",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "main": "src/index.ts",
   "author": "Jason Raimondi <jason@raimondi.us> (https://jasonraimondi.com)",
   "scripts": {
+    "prebuild": "rm -rf ./dist",
     "build": "tsc",
     "prepublish": "pnpm build"
   },

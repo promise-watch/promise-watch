@@ -1,9 +1,10 @@
 {
   "name": "@promise-watch/pushover",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "main": "src/index.ts",
   "author": "Jason Raimondi <jason@raimondi.us> (https://jasonraimondi.com)",
   "scripts": {
+    "prebuild": "rm -rf ./dist",
     "build": "tsc",
     "prepublish": "pnpm build"
   },
