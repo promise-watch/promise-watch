@@ -58,7 +58,8 @@ Add an entrypoint
 const options: ExecuteOptions = {
   dir: __dirname,
   errorNotifiers: [
-    // the ConsoleNotifier logs errors to the console
+    // The ConsoleNotifier logs errors to the console
+    // see below for other notifiers
     new ConsoleNotifier(),
   ],
 };
