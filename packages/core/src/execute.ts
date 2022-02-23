@@ -1,6 +1,7 @@
 import { resolve } from "path";
 import { glob } from "./utils/glob-promise";
 import { Notifier } from "./notifications";
+import { millisecondsToStr } from "./utils/time";
 
 export type RunPage = {
   name?: string;
@@ -19,11 +20,11 @@ export type ExecuteOptions = {
   notifiers?: Notifier[];
 };
 
+let alive = true;
+
 function sleep(ms: number) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
-
-let alive = true;
 
 async function fetchRuns(globPath: string, dir: string) {
   const files = await glob(globPath);
@@ -35,19 +36,35 @@ async function fetchRuns(globPath: string, dir: string) {
   }));
 }
 
-async function sendErrorNotifications(title: string, body: string, notifiers: Notifier[]) {
+async function sendNotifications(title: string, body: string, notifiers: Notifier[]) {
   for (const notify of notifiers) {
-    await notify.send({ title, body });
+    await notify.send({ title, body }).catch(console.error);
   }
 }
 
-async function recursiveRun(page: Required<RunPage>, notifiers: Notifier[] = []) {
+const errorMap = new Map<string, Date>();
+
+async function recursiveRun(page: Required<RunPage>, globalNotifiers: Notifier[] = []) {
   const { name, run, options } = page;
+  const notifiers = options.notifiers ?? globalNotifiers;
+
+  const errorStartTime = errorMap.get(name);
 
   try {
     await run();
+
+    if (errorMap.has(name)) {
+      errorMap.delete(name);
+      const message = `Run is back online! was down for ${millisecondsToStr(errorStartTime.getTime())}`;
+      await sendNotifications(name, message, notifiers);
+    }
   } catch (err) {
-    await sendErrorNotifications(name, err.message, options.notifiers ?? notifiers).catch(console.error);
+    // if we have already notified about the error,
+    // wait until success before sending another notification
+    if (!errorMap.has(name)) {
+      errorMap.set(name, new Date());
+      await sendNotifications(name, err.message, notifiers);
+    }
   }
 
   if (alive) {
