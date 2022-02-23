@@ -1,7 +1,7 @@
 import { Notifier, SendOptions } from "@promise-watch/core";
 import { Pushover } from "pushover-js";
 
-export type PushoverNotifierConstructor = {
+export type PushoverOptions = {
   userKey: string;
   apiKey: string;
   url?: string;
@@ -40,7 +40,7 @@ export type PushoverNotifierConstructor = {
 export class PushoverNotifier implements Notifier {
   private readonly pushover: Pushover;
 
-  constructor({ userKey, apiKey, device, sound, priority, url }: PushoverNotifierConstructor) {
+  constructor({ userKey, apiKey, device, sound, priority, url }: PushoverOptions) {
     this.pushover = new Pushover(userKey, apiKey);
 
     if (device) this.pushover = this.pushover.setDevice(device);
