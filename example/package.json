@@ -9,7 +9,7 @@
   "author": "Jason Raimondi",
   "dependencies": {
     "@promise-watch/core": "workspace:^0.0.4",
-    "@promise-watch/pushover": "workspace:^0.0.3",
+    "@promise-watch/pushover": "workspace:^0.0.4",
     "@promise-watch/slack": "workspace:^0.0.3",
     "@promise-watch/smtp": "workspace:^0.0.3",
     "dotenv": "^16.0.0",
