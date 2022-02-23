@@ -9,14 +9,14 @@ export type RunPage = {
 };
 
 export type RunOptions = {
-  errorNotifiers?: Notifier[];
+  notifiers?: Notifier[];
   interval: number;
 };
 
 export type ExecuteOptions = {
   dir: string;
   globPath?: string;
-  errorNotifiers?: Notifier[];
+  notifiers?: Notifier[];
 };
 
 function sleep(ms: number) {
@@ -25,35 +25,45 @@ function sleep(ms: number) {
 
 let alive = true;
 
-export async function executeJobs({ dir, errorNotifiers = [], globPath = "runs/**/*.{js,ts}" }: ExecuteOptions) {
+async function fetchRuns(globPath: string, dir: string) {
   const files = await glob(globPath);
   const imports = await Promise.all(files.map(f => import(resolve(dir, "../", f))));
-  const runs = imports.map((r: RunPage, idx) => ({
+  return imports.map((r: RunPage, idx) => ({
     name: r.name ?? files[idx],
     run: r.run,
     options: r.options,
   }));
+}
 
-  async function sendErrorNotifications(title: string, body: string, customNotifiers?: Notifier[]) {
-    for (const notify of customNotifiers ?? errorNotifiers) {
-      await notify.send({ title, body });
-    }
+async function sendErrorNotifications(title: string, body: string, notifiers: Notifier[]) {
+  for (const notify of notifiers) {
+    await notify.send({ title, body });
+  }
+}
+
+async function recursiveRun(page: Required<RunPage>, notifiers: Notifier[] = []) {
+  const { name, run, options } = page;
+
+  try {
+    await run();
+  } catch (err) {
+    await sendErrorNotifications(name, err.message, options.notifiers ?? notifiers).catch(console.error);
   }
 
-  async function extracted({ name, run, options }: Required<RunPage>) {
-    try {
-      await run();
-    } catch (err) {
-      await sendErrorNotifications(name, err.message, options.errorNotifiers);
-    }
-
-    if (alive) {
-      await sleep(options.interval * 1000);
-      await extracted({ name, run, options });
-    }
+  if (alive) {
+    await sleep(options.interval * 1000);
+    await recursiveRun({ name, run, options }, notifiers);
   }
+}
 
-  await Promise.allSettled(runs.map(run => extracted(run)));
+export async function executeJobs(options: ExecuteOptions) {
+  const {
+    dir,
+    notifiers = [],
+    globPath = "runs/**/*.{js,ts}",
+  } = options;
+  const runs = await fetchRuns(globPath, dir);
+  await Promise.allSettled(runs.map(run => recursiveRun(run, notifiers)));
 }
 
 function shutdown() {

@@ -12,7 +12,7 @@
     "src"
   ],
   "dependencies": {
-    "@promise-watch/core": "workspace:^0.0.2",
+    "@promise-watch/core": "workspace:^0.0.4",
     "@slack/webhook": "^6.1.0"
   },
   "publishConfig": {
