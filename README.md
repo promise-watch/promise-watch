@@ -1,10 +1,49 @@
 # Promise Watch
 
-An E2E monitor that runs Playwright to monitor your frontend application.
+An Api/E2E monitor that runs promises on intervals and sends notifications on errors. Supports [playwright](https://playwright.dev/) for reliable E2E testing. Has prebuilt notifiers for [SMTP](./packages/smtp), [Slack](./packages/slack), and [Pushover](./packages/pushover), and can support any custom notifier.
 
-Write whatever promise based checks you want, and if an error gets thrown, you can send notifications using several different notifiers. 
+Create a `run` directory where you write scripts, set options, then send notifications on errors. Checkout the [example dir](./example) to see a working example.
 
-Create a `run` directory where you write playwright scripts, set options, then send notifications on errors. Checkout the [example dir](./example) to see a working example.
+```
+./my-e2e-checks
+├── runs
+│   ├── checks-https-jasonraimondi-com.ts
+│   └── checks-https-google-com.ts
+├── src
+│   └── main.ts
+└── package.json
+```
+
+Your runs can be anything! It just needs to export an `options: RunOptions` and `run: Promise<void>`.
+
+```typescript
+// runs/checks-https-jasonraimondi-com.ts
+
+import { chromium } from "playwright";
+import { RunOptions } from "@promise-watch/core";
+
+export const options: RunOptions = {
+  interval: 60, // in seconds
+};
+
+export async function run(): Promise<void> {
+  const browser = await chromium.launch();
+  const page = await browser.newPage();
+
+  const site = "https://jasonraimondi.com";
+
+  const response = await page.goto(site);
+
+  if ((response?.status() ?? 1000) > 399) {
+    throw new Error(`${site} Failed to load!`);
+  }
+
+  await page.close({ runBeforeUnload: true });
+  await browser.close();
+
+  console.log(`success: ${__filename}`);
+}
+```
 
 ## Getting Started
 
@@ -25,32 +64,6 @@ pnpm add -D typescript ts-node @types/node
 ```
 
 Next, create a sample run. A run requires two exports: `options: { interval: number; }` and `run: Promise<void>`. For each 
-
-```typescript
-// runs/checks-jasonraimondi-com.ts
-export const options = {
-  interval: 30, // in seconds
-}
-
-export async function run() {
-  const browser = await chromium.launch();
-  const page = await browser.newPage();
-
-  const response = await page.goto("https://jasonraimondi.com", { waitUntil: "domcontentloaded" });
-  const status = response?.status() ?? 1000;
-
-  if (status > 399) {
-    throw new Error(`Failed with response code [${status}].`);
-  }
-
-  // await page.screenshot({ path: `tmp/screenshots/${new Date().toISOString()}-${basename(__filename)}.jpg` });
-
-  await page.close({ runBeforeUnload: true });
-  await browser.close();
-
-  console.log(`success: ${__filename}`);
-}
-```
 
 Add an entrypoint
 
@@ -90,9 +103,10 @@ pnpm start
 
 Send notifications when errors occur using the following providers:
 
-* [Pushover](./packages/pushover)
-* [Slack](./packages/slack)
-* [SMTP](./packages/smtp)
+* ConsoleNotifier
+* [PushoverNotifier](./packages/pushover)
+* [SlackNotifier](./packages/slack)
+* [SmtpNotifier](./packages/smtp)
 
 ```bash
 pnpm add @promise-watch/pushover @promise-watch/slack @promise-watch/smtp
@@ -101,6 +115,7 @@ pnpm add @promise-watch/pushover @promise-watch/slack @promise-watch/smtp
 Then in your execute options, add the `PushoverNotifier` to your `errorNotifiers` array.
 
 ```typescript
+import { ConsoleNotifier } from "@promise-watch/core";
 import { PushoverNotifier } from "@promise-watch/pushover";
 import { SlackNotifier } from "@promise-watch/slack";
 import { SmtpNotifier } from "@promise-watch/smtp";
@@ -108,6 +123,7 @@ import { SmtpNotifier } from "@promise-watch/smtp";
 const options: ExecuteOptions = {
   ...,
   errorNotifiers: [
+    new ConsoleNotifier(),
     new PushoverNotifier(process.env.PUSHOVER_USER_KEY, process.env.PUSHOVER_API_KEY),
     new SlackNotifier(process.env.SLACK_WEBHOOK_URL),
     new SmtpNotifier(...),
@@ -123,6 +139,7 @@ Implement the Notifier type and you're good to go. See the [pushover notifier](.
 export type SendOptions = {
   title: string;
   body: string;
+  isSuccess?: boolean;
 }
 
 export type Notifier = {
@@ -132,4 +149,4 @@ export type Notifier = {
 
 ## Caveats
 
-I have a feeling this isnt gonna scale nicely. I am planning on only using this for ~5 runs so we'll see how it goes.
+I have a feeling this isnt gonna scale nicely.
