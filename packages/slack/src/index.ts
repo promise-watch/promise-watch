@@ -8,9 +8,25 @@ export class SlackNotifier implements Notifier {
     this.webhook = new IncomingWebhook(url);
   }
 
-  async send({ title, body }: SendOptions): Promise<void> {
+  async send({ title, body, isSuccess }: SendOptions): Promise<void> {
     await this.webhook.send({
-      text: `**${title}**\n${body}`,
+      blocks: [
+        {
+          type: "header",
+          text: {
+            type: "plain_text",
+            text: isSuccess ? `:hospital: ${title} has recovered.` : `:exclamation: ${title} seems down!`,
+            emoji: true,
+          },
+        },
+        {
+          type: "section",
+          text: {
+            type: "plain_text",
+            text: body,
+          },
+        },
+      ],
       ...this.options,
     });
   }
