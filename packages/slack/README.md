@@ -9,14 +9,7 @@ pnpm add @promise-watch/slack
 ## Usage
 
 ```typescript
-const options: ExecuteOptions = {
-  dir: __dirname,
-  errorNotifiers: [
-    new SlackNotifier(process.env.SLACK_WEBHOOK_URL),
-  ],
-};
-
-executeJobs(options);
+new SlackNotifier(process.env.SLACK_WEBHOOK_URL);
 ```
 
 ### Extended Configuration
@@ -31,10 +24,5 @@ const slackOptions: IncomingWebhookSendArguments = {
   icon_emoji: ":ghost:",
 };
 
-const options: ExecuteOptions = {
-  dir: __dirname,
-  errorNotifiers: [
-    new SlackNotifier(process.env.SLACK_WEBHOOK_URL, slackOptions),
-  ],
-};
+new SlackNotifier(process.env.SLACK_WEBHOOK_URL, slackOptions);
 ```

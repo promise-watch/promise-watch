@@ -23,10 +23,5 @@ const mailOptions: Mail.Options = {
   from: process.env.SMTP_FROM,
 };
 
-const options: ExecuteOptions = {
-  dir: __dirname,
-  errorNotifiers: [
-    new SmtpNotifier(smtpOptions, mailOptions),
-  ],
-};
+new SmtpNotifier(smtpOptions, mailOptions);
 ```

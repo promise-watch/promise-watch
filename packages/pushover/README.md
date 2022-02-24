@@ -11,20 +11,15 @@ pnpm add @promise-watch/pushover
 ```typescript
 import { PushoverNotifier } from "@promise-watch/pushover";
 
-const options: ExecuteOptions = {
-  dir: __dirname,
-  errorNotifiers: [
-    new PushoverNotifier({
-      apiKey: process.env.PUSHOVER_API_KEY!,
-      userKey: process.env.PUSHOVER_USER_KEY!,
-    }),
-  ],
-};
-
-executeJobs(options);
+new PushoverNotifier({
+  apiKey: process.env.PUSHOVER_API_KEY!,
+  userKey: process.env.PUSHOVER_USER_KEY!,
+});
 ```
 
 ### Extended Configuration
+
+See [index.ts](https://github.com/jasonraimondi/promise-watch/blob/master/packages/pushover/src/index.ts) for full options.
 
 ```typescript
 import { PushoverNotifier, PushoverOptions } from "@promise-watch/pushover";
@@ -39,10 +34,5 @@ const pushoverOptions: PushoverOptions = {
   sound: 'bike',
 }
 
-const options: ExecuteOptions = {
-  dir: __dirname,
-  errorNotifiers: [
-    new PushoverNotifier(pushoverOptions),
-  ],
-};
+new PushoverNotifier(pushoverOptions);
 ```
