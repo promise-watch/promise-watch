@@ -70,7 +70,7 @@ Add an entrypoint
 ```typescript
 const options: ExecuteOptions = {
   dir: __dirname,
-  errorNotifiers: [
+  notifiers: [
     // The ConsoleNotifier logs errors to the console
     // see below for other notifiers
     new ConsoleNotifier(),
@@ -122,7 +122,7 @@ import { SmtpNotifier } from "@promise-watch/smtp";
 
 const options: ExecuteOptions = {
   ...,
-  errorNotifiers: [
+  notifiers: [
     new ConsoleNotifier(),
     new PushoverNotifier(process.env.PUSHOVER_USER_KEY, process.env.PUSHOVER_API_KEY),
     new SlackNotifier(process.env.SLACK_WEBHOOK_URL),
