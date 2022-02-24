@@ -1,9 +1,13 @@
 import { RunOptions } from "@promise-watch/core";
 
 export const options: RunOptions = {
-  interval: 4,
+  interval: 15,
 };
 
 export async function run() {
-  throw new Error("this is an error");
+  if (Math.random() * 100 > 70) {
+    throw new Error("this is an error");
+  } else {
+    console.log("SUCCESS");
+  }
 }
