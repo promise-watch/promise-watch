@@ -1,6 +1,7 @@
 export type SendOptions = {
   title: string;
   body: string;
+  isSuccess?: boolean;
 };
 
 export type Notifier = {
