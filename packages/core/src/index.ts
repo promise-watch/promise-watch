@@ -1,7 +1,10 @@
-import { haltRecursion, recursivelyRun } from "./run";
+import { haltRecursion, recursivelyRun } from "./recursively-run";
 import { ExecuteOptions } from "./types";
-import { importRunsFromPath } from "./files";
-import { filterRunsWithoutRequiredFields } from "./execute";
+import { importRunsFromPath } from "./import-runs";
+import { filterRunsWithoutRequiredFields } from "./filter-runs";
+
+export * from "./notifiers/console-notifier"
+export * from "./types";
 
 export async function executeJobs(options: ExecuteOptions) {
   const {
@@ -16,6 +19,7 @@ export async function executeJobs(options: ExecuteOptions) {
 
 function shutdown() {
   haltRecursion();
+  console.log("HALTING RECURSION");
   process.exit(0);
 }
 

@@ -1,4 +1,4 @@
-import { filterRunsWithoutRequiredFields } from "./execute";
+import { filterRunsWithoutRequiredFields } from "./filter-runs";
 
 describe("filterRunsWithoutRequiredFields", () => {
   const validPage = {

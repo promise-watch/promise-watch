@@ -1,6 +1,6 @@
 import { Notifier, RunPage } from "./types";
 import { sleep } from "./utils/sleep";
-import { sendErrorNotifications, sendSuccessNotifications } from "./notifications";
+import { sendErrorNotifications, sendSuccessNotifications } from "./send-notifications";
 
 let alive = true;
 

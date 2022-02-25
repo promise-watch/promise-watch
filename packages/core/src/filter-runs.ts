@@ -1,5 +1,7 @@
 import { RunPage } from "./types";
 
+// since runs are just arbitrarily imported files, we need to do some
+// runtime checks to verify the required exports are included
 export function filterRunsWithoutRequiredFields(pages: RunPage[]): RunPage[] {
   return pages.reduce((prev, next) => {
     const errors = [];
