@@ -10,12 +10,11 @@ export function filterRunsWithoutRequiredFields(pages: RunPage[]): RunPage[] {
     if (typeof next.options?.interval !== "number") errors.push(`* missing required export const option.interval`);
 
     if (errors.length) {
-      console.log(`${next.name} has errors and was skipped:`)
+      console.log(`${next.name} has errors and was skipped:`);
       console.log(errors.join("\n"), "\n");
       return [...prev];
     }
 
     return [...prev, next];
   }, [] as RunPage[]);
-
 }

@@ -5,7 +5,7 @@ describe("filterRunsWithoutRequiredFields", () => {
     name: "successful run",
     options: { interval: 1 },
     run: async () => {},
-  }
+  };
 
   beforeEach(() => {
     console.log = jest.fn();
@@ -23,11 +23,9 @@ describe("filterRunsWithoutRequiredFields", () => {
 
   it("invalid options function alerts and is skipped", () => {
     const invalidPageOptions: any = {
-      run: async () => {
-      },
+      run: async () => {},
     };
     expect(filterRunsWithoutRequiredFields([invalidPageOptions, validPage])).toStrictEqual([validPage]);
     expect(console.log).toHaveBeenCalledTimes(2);
   });
 });
-

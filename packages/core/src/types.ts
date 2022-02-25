@@ -25,4 +25,4 @@ export type Notifier = {
   send(options: SendOptions): Promise<void>;
 };
 
-export type SendNotifications = { title: string; body: string; notifiers: Notifier[]; isSuccess?: boolean; }
+export type SendNotifications = { title: string; body: string; notifiers: Notifier[]; isSuccess?: boolean };
