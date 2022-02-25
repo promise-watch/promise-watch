@@ -4,6 +4,7 @@
   "main": "src/index.ts",
   "author": "Jason Raimondi <jason@raimondi.us> (https://jasonraimondi.com)",
   "scripts": {
+    "test": "jest",
     "build": "tsc",
     "prepublish": "rm -rf ./dist && pnpm build"
   },
