@@ -29,11 +29,23 @@ function sleep(ms: number) {
 async function fetchRuns(globPath: string, dir: string) {
   const files = await glob(globPath);
   const imports = await Promise.all(files.map(f => import(resolve(dir, "../", f))));
-  return imports.map((r: RunPage, idx) => ({
-    name: r.name ?? files[idx].replace("runs/", ""),
-    run: r.run,
-    options: r.options,
-  }));
+  return imports.map(({ name, run, options }: RunPage, idx) => {
+    name = name ?? files[idx].replace("runs/", "")
+    return { name, run, options }
+  }).reduce((prev, next) => {
+    const errors = [];
+
+    if (typeof next.run !== "function") errors.push(`* missing required export async function run()`);
+    if (typeof next.options?.interval !== "number") errors.push(`* missing required export const option.interval`);
+
+    if (errors.length) {
+      console.log(`${next.name} has errors and was skipped:`);
+      console.log(errors.join("\n"), "\n");
+      return [...prev];
+    }
+
+    return [...prev, next];
+  }, [] as Required<RunPage>[])
 }
 
 type SendNotifications = { title: string; body: string; notifiers: Notifier[]; isSuccess?: boolean; }
@@ -64,6 +76,7 @@ async function recursiveRun(page: Required<RunPage>, globalNotifiers: Notifier[]
       delete errors[name];
     }
   } catch (err: any) {
+
     // if we have already notified about the error,
     // wait until success before sending another notification
     if (!errors[name]) {
