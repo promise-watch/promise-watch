@@ -3,7 +3,7 @@ import { createTransport, Transporter } from "nodemailer";
 import SMTPTransport from "nodemailer/lib/smtp-transport";
 import Mail from "nodemailer/lib/mailer";
 
-export class SmtpNotifer implements Notifier {
+export class SmtpNotifier implements Notifier {
   private readonly transporter: Transporter<SMTPTransport.SentMessageInfo>;
 
   constructor(transport: SMTPTransport | SMTPTransport.Options | string, private readonly sendInfo: Mail.Options) {

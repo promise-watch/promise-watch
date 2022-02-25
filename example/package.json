@@ -11,9 +11,9 @@
     "@promise-watch/core": "workspace:^0.0.8",
     "@promise-watch/pushover": "workspace:^0.0.9",
     "@promise-watch/slack": "workspace:^0.0.7",
-    "@promise-watch/smtp": "workspace:^0.0.7",
+    "@promise-watch/smtp": "workspace:^0.0.8",
     "dotenv": "^16.0.0",
-    "playwright": "^1.19.1"
+    "playwright": "^1.19.2"
   },
   "devDependencies": {
     "@types/node": "^17.0.21",
