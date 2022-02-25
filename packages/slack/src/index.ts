@@ -15,7 +15,7 @@ export class SlackNotifier implements Notifier {
           type: "header",
           text: {
             type: "plain_text",
-            text: isSuccess ? `:hospital: ${title} has recovered.` : `:exclamation: ${title} seems down!`,
+            text: isSuccess ? `:white_check_mark: ${title} has recovered.` : `:exclamation: ${title} seems down!`,
             emoji: true,
           },
         },
