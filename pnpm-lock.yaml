@@ -22,7 +22,7 @@ importers:
 
   example:
     specifiers:
-      '@promise-watch/core': workspace:^0.0.9
+      '@promise-watch/core': workspace:^0.0.10
       '@promise-watch/pushover': workspace:^0.0.9
       '@promise-watch/slack': workspace:^0.0.8
       '@promise-watch/smtp': workspace:^0.0.8
@@ -60,7 +60,7 @@ importers:
 
   packages/pushover:
     specifiers:
-      '@promise-watch/core': workspace:^0.0.9
+      '@promise-watch/core': workspace:^0.0.10
       pushover-js: ^1.3.1
     dependencies:
       '@promise-watch/core': link:../core
@@ -68,7 +68,7 @@ importers:
 
   packages/slack:
     specifiers:
-      '@promise-watch/core': workspace:^0.0.9
+      '@promise-watch/core': workspace:^0.0.10
       '@slack/webhook': ^6.1.0
     dependencies:
       '@promise-watch/core': link:../core
@@ -76,7 +76,7 @@ importers:
 
   packages/smtp:
     specifiers:
-      '@promise-watch/core': workspace:^0.0.9
+      '@promise-watch/core': workspace:^0.0.10
       '@types/nodemailer': ^6.4.4
       nodemailer: ^6.7.2
     dependencies:
@@ -1005,7 +1005,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001312
-      electron-to-chromium: 1.4.72
+      electron-to-chromium: 1.4.73
       escalade: 3.1.1
       node-releases: 2.0.2
       picocolors: 1.0.0
@@ -1235,8 +1235,8 @@ packages:
     engines: {node: '>=12'}
     dev: false
 
-  /electron-to-chromium/1.4.72:
-    resolution: {integrity: sha512-9LkRQwjW6/wnSfevR21a3k8sOJ+XWSH7kkzs9/EUenKmuDkndP3W9y1yCZpOxufwGbX3JV8glZZSDb4o95zwXQ==}
+  /electron-to-chromium/1.4.73:
+    resolution: {integrity: sha512-RlCffXkE/LliqfA5m29+dVDPB2r72y2D2egMMfIy3Le8ODrxjuZNVo4NIC2yPL01N4xb4nZQLwzi6Z5tGIGLnA==}
     dev: true
 
   /emittery/0.8.1:
