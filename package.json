@@ -4,7 +4,7 @@
   "license": "MIT",
   "author": "Jason Raimondi <jason@raimondi.us> (https://jasonraimondi.com)",
   "scripts": {
-    "test": "jest",
+    "test": "jest --coverage",
     "build": "pnpm run build --recursive",
     "pub": "pnpm publish --recursive --filter=\"@promise-watch/*\" --access=public",
     "format": "prettier --write packages/**/src --write example/src --write example/runs"
