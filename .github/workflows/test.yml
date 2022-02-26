@@ -15,5 +15,6 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: 16.13.2
-          registry-url: https://registry.npmjs.org/
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
       - run: pnpm it --frozen-lockfile --production false
