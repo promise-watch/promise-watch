@@ -1,6 +1,4 @@
-<h1 align="center">
-  	<img height="100" src="https://github.com/jasonraimondi/promise-watch/raw/master/logos/promise-watch-logo-vertical.png" alt="Promise Watch logo" />
-</h1>
+![Promise Watch Logo](./logos/promise-watch-logo-horizontal.png)
 
 [![Tests](https://github.com/jasonraimondi/promise-watch/actions/workflows/test.yml/badge.svg)](https://github.com/jasonraimondi/promise-watch/actions/workflows/test.yml)
 [![License](https://img.shields.io/github/license/jasonraimondi/promise-watch?color=#31C754)](./LICENSE.md)
