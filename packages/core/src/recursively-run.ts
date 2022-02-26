@@ -18,15 +18,9 @@ export async function recursivelyRun(page: RunPage, notifiers: Notifier[] = []) 
   };
 
   // try runs twice before sending an error notification
-  try {
-    await runAttempt();
-  } catch (err: any) {
-    try {
-      await runAttempt();
-    } catch (err: any) {
-      await sendErrorNotifications(name, err.message, notifiers);
-    }
-  }
+  await runAttempt()
+    .catch(() => runAttempt())
+    .catch(err => sendErrorNotifications(name, err.message, notifiers));
 
   if (alive) {
     await sleep(options.interval * 1000);
