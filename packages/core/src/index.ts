@@ -1,4 +1,4 @@
-import { haltRecursion, recursivelyRun } from "./recursively-run";
+import { recursivelyRun } from "./recursively-run";
 import { ExecuteOptions } from "./types";
 import { importRunsFromPath } from "./import-runs";
 import { filterRunsWithoutRequiredFields } from "./filter-runs";
@@ -12,12 +12,3 @@ export async function executeJobs(options: ExecuteOptions) {
   runs = filterRunsWithoutRequiredFields(runs);
   await Promise.allSettled(runs.map(run => recursivelyRun(run, notifiers)));
 }
-
-function shutdown() {
-  haltRecursion();
-  console.log("HALTING RECURSION");
-  process.exit(0);
-}
-
-process.on("SIGINT", shutdown);
-process.on("SIGTERM", shutdown);

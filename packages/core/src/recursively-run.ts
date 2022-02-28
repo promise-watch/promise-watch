@@ -27,3 +27,12 @@ export async function recursivelyRun(page: RunPage, notifiers: Notifier[] = []) 
     await recursivelyRun(page, notifiers);
   }
 }
+
+function shutdown() {
+  haltRecursion();
+  console.log("HALTING RECURSION");
+  process.exit(0);
+}
+
+process.on("SIGINT", shutdown);
+process.on("SIGTERM", shutdown);
