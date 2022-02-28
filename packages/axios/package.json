@@ -1,0 +1,23 @@
+{
+  "name": "@promise-watch/axios",
+  "version": "0.0.1",
+  "main": "src/index.ts",
+  "author": "Jason Raimondi <jason@raimondi.us> (https://jasonraimondi.com)",
+  "scripts": {
+    "build": "tsc",
+    "prepublish": "rm -rf ./dist && pnpm build"
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "dependencies": {
+    "@promise-watch/core": "workspace:^0.0.13",
+    "axios": "^0.26.0"
+  },
+  "publishConfig": {
+    "main": "dist/index.js",
+    "private": false,
+    "license": "MIT"
+  }
+}

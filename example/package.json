@@ -8,15 +8,18 @@
   },
   "author": "Jason Raimondi",
   "dependencies": {
+    "@promise-watch/axios": "workspace:^0.0.1",
     "@promise-watch/core": "workspace:^0.0.13",
     "@promise-watch/pushover": "workspace:^0.0.10",
     "@promise-watch/slack": "workspace:^0.0.9",
     "@promise-watch/smtp": "workspace:^0.0.9",
     "dotenv": "^16.0.0",
+    "node-fetch": "^2.6.7",
     "playwright": "^1.19.2"
   },
   "devDependencies": {
     "@types/node": "^17.0.21",
+    "@types/node-fetch": "^2.6.1",
     "prettier": "^2.5.1",
     "ts-node": "^10.5.0",
     "typescript": "^4.5.5"

@@ -149,3 +149,19 @@ export type Notifier = {
   sendRecovered(options: SendOptions): Promise<void>;
 }
 ```
+
+## API Monitoring with Axios
+
+Since it is just a Promise with errors being thrown, you can opt to just have a run that just makes an http api request to an endpoint. There is a helper package `@promise-watch/axois` that has a small helper for that.
+
+```typescript
+import { checkHttp } from "@promise-watch/axios";
+
+export const options = {
+  interval: 30,
+}
+
+export async function run() {
+  await checkHttp(new URL("https://jasonraimondi.com"));
+}
+```
