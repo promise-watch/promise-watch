@@ -17,13 +17,31 @@ export async function recursivelyRun(page: RunPage, notifiers: Notifier[] = []) 
     await sendSuccessNotifications(name, notifiers);
   };
 
+  let passed = false;
+
   // try runs twice before sending an error notification
   await runAttempt()
-    .catch(() => runAttempt())
+    .catch(() => {
+      passed = false;
+      return runAttempt();
+    })
     .catch(err => sendErrorNotifications(name, err.message, notifiers));
 
+  // passed                            wait
+  // failed tryAgainImmediately: false wait
+  // failed tryAgainImmediately: true  no-wait
+
   if (alive) {
-    await sleep(options.interval * 1000);
+    if (passed) {
+      await sleep(options.interval * 1000);
+      await recursivelyRun(page, notifiers);
+      return;
+    }
+
+    if (!options.tryAgainImmediately) {
+      await sleep(options.interval * 1000);
+    }
+
     await recursivelyRun(page, notifiers);
   }
 }

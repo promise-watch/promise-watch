@@ -1,8 +1,9 @@
 import { haltRecursion, recursivelyRun } from "./recursively-run";
 import { ConsoleNotifier } from "./notifiers/console-notifier";
+import { RunPage } from "./types";
 
 describe("recursively run", () => {
-  const page = {
+  const page: RunPage = {
     name: "test run",
     run: async () => {
       throw new Error("invalid run");
@@ -11,7 +12,7 @@ describe("recursively run", () => {
   };
 
   beforeEach(() => {
-    page.run = jest.fn();
+    console.log = jest.fn();
   });
 
   afterEach(() => {

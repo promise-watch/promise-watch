@@ -5,8 +5,9 @@ export type RunPage = {
 };
 
 export type RunOptions = {
-  notifiers?: Notifier[];
   interval: number;
+  notifiers?: Notifier[];
+  tryAgainImmediately?: boolean;
 };
 
 export type ExecuteOptions = {
