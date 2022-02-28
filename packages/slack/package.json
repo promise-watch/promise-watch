@@ -1,6 +1,6 @@
 {
   "name": "@promise-watch/slack",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "main": "src/index.ts",
   "author": "Jason Raimondi <jason@raimondi.us> (https://jasonraimondi.com)",
   "scripts": {
@@ -12,7 +12,7 @@
     "src"
   ],
   "dependencies": {
-    "@promise-watch/core": "workspace:^0.0.12",
+    "@promise-watch/core": "workspace:^0.0.13",
     "@slack/webhook": "^6.1.0"
   },
   "publishConfig": {

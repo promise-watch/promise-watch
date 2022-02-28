@@ -5,7 +5,7 @@ describe("recursively run", () => {
   const consoleNotifier = new ConsoleNotifier();
 
   beforeEach(() => {
-    consoleNotifier.send = jest.fn(() => Promise.resolve());
+    consoleNotifier.sendError = jest.fn(() => Promise.resolve());
     console.log = jest.fn();
   });
 
@@ -19,7 +19,7 @@ describe("recursively run", () => {
 
     await sendErrorNotifications(title, body, [consoleNotifier]);
 
-    expect(consoleNotifier.send).toHaveBeenCalledTimes(1);
-    expect(consoleNotifier.send).toHaveBeenCalledWith({ body, title, isSuccess: false });
+    expect(consoleNotifier.sendError).toHaveBeenCalledTimes(1);
+    expect(consoleNotifier.sendError).toHaveBeenCalledWith({ body, title });
   });
 });

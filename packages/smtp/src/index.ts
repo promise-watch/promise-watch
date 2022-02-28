@@ -10,14 +10,21 @@ export class SmtpNotifier implements Notifier {
     this.transporter = createTransport(transport);
   }
 
-  async send({ title, body, isSuccess }: SendOptions): Promise<void> {
-    const subject = isSuccess ? `${title} has recovered.` : `${title} seems down!`;
+  async sendError({ title, body }: SendOptions): Promise<void> {
+    const subject = `${title} seems down!`;
     await this.transporter.sendMail({
       subject,
-      text: `${subject}
+      text: body,
+      html: `<h2>${title}</h2><p>${body}</p>`,
+      ...this.sendInfo,
+    });
+  }
 
-${body}
-`,
+  async sendRecovered({ title, body }: SendOptions): Promise<void> {
+    const subject = `${title} has recovered.`;
+    await this.transporter.sendMail({
+      subject,
+      text: body,
       html: `<h2>${subject}</h2><p>${body}</p>`,
       ...this.sendInfo,
     });

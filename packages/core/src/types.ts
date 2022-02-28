@@ -19,11 +19,11 @@ export type ExecuteOptions = {
 export type SendOptions = {
   title: string;
   body: string;
-  isSuccess?: boolean;
 };
 
 export type Notifier = {
-  send(options: SendOptions): Promise<void>;
+  sendError(options: SendOptions): Promise<void>;
+  sendRecovered(options: SendOptions): Promise<void>;
 };
 
 export type SendNotifications = { title: string; body: string; notifiers: Notifier[]; isSuccess?: boolean };

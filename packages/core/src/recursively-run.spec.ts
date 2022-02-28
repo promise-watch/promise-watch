@@ -12,7 +12,7 @@ describe("recursively run", () => {
   };
 
   beforeEach(() => {
-    console.log = jest.fn();
+    page.run = jest.fn();
   });
 
   afterEach(() => {

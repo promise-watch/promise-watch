@@ -49,8 +49,11 @@ export class PushoverNotifier implements Notifier {
     if (priority) this.pushover = this.pushover.setPriority(priority.priority, priority.expire, priority.retry);
   }
 
-  async send({ title, body, isSuccess }: SendOptions): Promise<void> {
-    title = isSuccess ? `${title} seems down!` : `${title} has recovered.`;
-    await this.pushover.send(title, body);
+  async sendError({ title, body }: SendOptions) {
+    await this.pushover.send(`${title} seems down!`, body);
+  }
+
+  async sendRecovered({ title, body }: SendOptions) {
+    await this.pushover.send(`${title} has recovered.`, body);
   }
 }

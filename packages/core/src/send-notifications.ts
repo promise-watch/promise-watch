@@ -1,9 +1,10 @@
 import { Notifier, SendNotifications } from "./types";
 import { howLongAgo } from "./utils/time";
 
-async function sendNotifications({ title, body, notifiers, isSuccess = false }: SendNotifications) {
+async function sendNotifications({ notifiers, isSuccess, ...message }: SendNotifications) {
   for (const notify of notifiers) {
-    await notify.send({ title, body, isSuccess }).catch(console.error);
+    const send = isSuccess ? notify.sendRecovered : notify.sendError;
+    await send(message).catch(console.error);
   }
 }
 

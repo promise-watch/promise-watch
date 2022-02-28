@@ -1,6 +1,6 @@
 {
   "name": "@promise-watch/core",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "main": "src/index.ts",
   "author": "Jason Raimondi <jason@raimondi.us> (https://jasonraimondi.com)",
   "scripts": {

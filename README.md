@@ -142,14 +142,10 @@ Implement the Notifier type and you're good to go. See the [pushover notifier](.
 export type SendOptions = {
   title: string;
   body: string;
-  isSuccess?: boolean;
 }
 
 export type Notifier = {
-  send(options: SendOptions): Promise<void>;
+  sendError(options: SendOptions): Promise<void>;
+  sendRecovered(options: SendOptions): Promise<void>;
 }
 ```
-
-## Caveats
-
-I have a feeling this isnt gonna scale nicely.
