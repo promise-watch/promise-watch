@@ -104,6 +104,19 @@ And go
 pnpm start
 ```
 
+## Configuration
+
+The default options:
+
+```typescript
+export const options = {
+  interval: 30, // required, in seconds
+  notifiers: undefined; // default: undefined
+  logSuccess: false; // default: false
+  retryImmediatelyAfterFail: false; // default: false
+};
+```
+
 ## Notifiers
 
 Send notifications when errors occur using the following providers:
@@ -121,17 +134,12 @@ Then in your execute options, add the `PushoverNotifier` to your `errorNotifiers
 
 ```typescript
 import { ConsoleNotifier } from "@promise-watch/core";
-import { PushoverNotifier } from "@promise-watch/pushover";
-import { SlackNotifier } from "@promise-watch/slack";
-import { SmtpNotifier } from "@promise-watch/smtp";
 
 const options: ExecuteOptions = {
   ...,
   notifiers: [
     new ConsoleNotifier(),
-    new PushoverNotifier({ userKey: process.env.PUSHOVER_USER_KEY, apiKey: process.env.PUSHOVER_API_KEY }),
-    new SlackNotifier(process.env.SLACK_WEBHOOK_URL),
-    new SmtpNotifier(...),
+    ...
   ]
 }
 ```
@@ -152,7 +160,7 @@ export type Notifier = {
 }
 ```
 
-## API Monitoring with Axios
+## API Monitoring
 
 Since it is just a Promise with errors being thrown, you can opt to just have a run that just makes an http api request to an endpoint. There is a helper package `@promise-watch/axois` that has a small helper for that.
 
