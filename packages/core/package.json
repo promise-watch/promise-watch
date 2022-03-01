@@ -1,8 +1,11 @@
 {
   "name": "@promise-watch/core",
   "version": "1.0.0",
-  "main": "src/index.ts",
   "author": "Jason Raimondi <jason@raimondi.us> (https://jasonraimondi.com)",
+  "main": "src/index.ts",
+  "bin": {
+    "promise-watch": "src/bin/promise-watch.ts"
+  },
   "scripts": {
     "test": "jest",
     "build": "tsc",
@@ -26,6 +29,9 @@
   "publishConfig": {
     "main": "dist/index.js",
     "private": false,
-    "license": "MIT"
+    "license": "MIT",
+    "bin": {
+      "promise-watch": "dist/bin/promise-watch.js"
+    }
   }
 }
