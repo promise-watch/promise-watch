@@ -12,12 +12,13 @@ export async function recursivelyRun(page: RunPage, notifiers: Notifier[] = []) 
   const { name, run, options } = page;
   notifiers = options.notifiers ?? notifiers;
 
+  let passed = false;
+
   const runAttempt = async () => {
     await run();
     await sendSuccessNotifications(name, notifiers);
+    passed = true;
   };
-
-  let passed = false;
 
   // try runs twice before sending an error notification
   await runAttempt()
@@ -25,11 +26,9 @@ export async function recursivelyRun(page: RunPage, notifiers: Notifier[] = []) 
       passed = false;
       return runAttempt();
     })
-    .catch(err => sendErrorNotifications(name, err.message, notifiers));
-
-  // passed                            wait
-  // failed tryAgainImmediately: false wait
-  // failed tryAgainImmediately: true  no-wait
+    .catch(err => {
+      return sendErrorNotifications(name, err.message, notifiers)
+    });
 
   if (alive) {
     if (passed) {
@@ -38,7 +37,7 @@ export async function recursivelyRun(page: RunPage, notifiers: Notifier[] = []) 
       return;
     }
 
-    if (!options.tryAgainImmediately) {
+    if (options.retryImmediatelyAfterFail !== true) {
       await sleep(options.interval * 1000);
     }
 

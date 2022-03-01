@@ -7,7 +7,7 @@ export type RunPage = {
 export type RunOptions = {
   interval: number;
   notifiers?: Notifier[];
-  tryAgainImmediately?: boolean;
+  retryImmediatelyAfterFail?: boolean;
 };
 
 export type ExecuteOptions = {
