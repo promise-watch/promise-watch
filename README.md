@@ -109,7 +109,14 @@ pnpm start
 The default options:
 
 ```typescript
-export const options = {
+type RunOptions = {
+  interval: number;
+  notifiers?: Notifier[];
+  logSuccess?: boolean;
+  retryImmediatelyAfterFail?: boolean;
+};
+
+const options: RunOptions = {
   // required, in seconds
   interval: 30, 
   
