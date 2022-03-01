@@ -18,7 +18,7 @@ export async function recursivelyRun(page: RunPage, notifiers: Notifier[] = []) 
     await run();
     await sendSuccessNotifications(name, notifiers);
     passed = true;
-    if (options.logSuccess) console.log(new Date(), name, "SUCCESS");
+    if (options.logSuccess) console.log(new Date(), "success", name);
   };
 
   // try runs twice before sending an error notification
