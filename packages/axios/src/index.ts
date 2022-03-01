@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 
-export async function checkURL(url: URL): Promise<AxiosResponse> {
+export async function checkURL(url: URL | string): Promise<AxiosResponse> {
   return axios.get(url.toString())
     .catch((error) => {
       if (error.response) {
