@@ -23,11 +23,13 @@ jobs:
           cache: pnpm
           cache-dependency-path: pnpm-lock.yaml
       - run: pnpm it --frozen-lockfile --production false
-      
+
   publish:
+    if: github.ref_name == 'master'
+    needs: [ test ]
     runs-on: ubuntu-latest
-    if: github.event_name != 'release'
-    needs: [test]
+    env:
+      NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
     steps:
       - uses: actions/checkout@v2
       - uses: pnpm/action-setup@v2
@@ -38,7 +40,6 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
           cache: pnpm
           cache-dependency-path: pnpm-lock.yaml
+          registry-url: 'https://registry.npmjs.org'
       - run: pnpm i --frozen-lockfile --production false
       - run: pnpm publish --recursive --filter="@promise-watch/*" --access=public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
