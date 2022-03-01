@@ -167,3 +167,9 @@ export async function run() {
   await checkHttp(new URL("https://jasonraimondi.com"));
 }
 ```
+
+## Caveats
+
+For now, this is not going scale to many runs nicely. I'm not sure the limit, but with enough runs, someone will surely find out for us!
+
+
