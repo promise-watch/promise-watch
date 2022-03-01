@@ -129,7 +129,7 @@ const options: ExecuteOptions = {
   ...,
   notifiers: [
     new ConsoleNotifier(),
-    new PushoverNotifier(process.env.PUSHOVER_USER_KEY, process.env.PUSHOVER_API_KEY),
+    new PushoverNotifier({ userKey: process.env.PUSHOVER_USER_KEY, apiKey: process.env.PUSHOVER_API_KEY }),
     new SlackNotifier(process.env.SLACK_WEBHOOK_URL),
     new SmtpNotifier(...),
   ]
