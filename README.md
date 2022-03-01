@@ -111,9 +111,9 @@ The default options:
 ```typescript
 export const options = {
   interval: 30, // required, in seconds
-  notifiers: undefined; // default: undefined
-  logSuccess: false; // default: false
-  retryImmediatelyAfterFail: false; // default: false
+  notifiers: undefined, // default: undefined
+  logSuccess: false, // default: false
+  retryImmediatelyAfterFail: false, // default: false
 };
 ```
 
@@ -179,5 +179,3 @@ export async function run() {
 ## Caveats
 
 For now, this is not going scale to many runs nicely. I'm not sure the limit, but with enough runs, someone will surely find out for us!
-
-
