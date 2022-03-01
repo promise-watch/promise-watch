@@ -110,10 +110,17 @@ The default options:
 
 ```typescript
 export const options = {
-  interval: 30, // required, in seconds
-  notifiers: undefined, // default: undefined
-  logSuccess: false, // default: false
-  retryImmediatelyAfterFail: false, // default: false
+  // required, in seconds
+  interval: 30, 
+  
+  // default: undefined
+  notifiers: undefined,
+ 
+  // default: false
+  logSuccess: false, 
+  
+  // default: false
+  retryImmediatelyAfterFail: false, 
 };
 ```
 
