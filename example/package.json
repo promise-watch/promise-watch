@@ -1,28 +1,26 @@
 {
   "name": "example",
   "version": "1.0.0",
-  "description": "",
+  "description": "A template repository for promise-watch",
   "main": "index.js",
   "scripts": {
-    "dev": "promise-watch",
-    "start": "ts-node src/main.ts"
+    "start": "promise-watch"
   },
-  "author": "Jason Raimondi",
+  "author": "Jason Raimondi <jason@raimondi.us> (https://jasonraimondi.com)",
   "dependencies": {
     "@promise-watch/axios": "workspace:^1.0.0",
-    "@promise-watch/core": "workspace:^1.0.0",
+    "@promise-watch/core": "workspace:^1.1.0-next.1",
     "@promise-watch/pushover": "workspace:^1.0.0",
     "@promise-watch/slack": "workspace:^1.0.0",
     "@promise-watch/smtp": "workspace:^1.0.0",
     "dotenv": "^16.0.0",
-    "node-fetch": "^2.6.7",
     "playwright": "^1.19.2"
   },
   "devDependencies": {
     "@types/node": "^17.0.21",
     "@types/node-fetch": "^2.6.1",
     "prettier": "^2.5.1",
-    "ts-node": "^10.5.0",
+    "ts-node": "^10.6.0",
     "typescript": "^4.6.2"
   }
 }

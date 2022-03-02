@@ -12,7 +12,7 @@
     "src"
   ],
   "dependencies": {
-    "@promise-watch/core": "workspace:^1.0.0",
+    "@promise-watch/core": "workspace:^1.1.0-next.1",
     "nodemailer": "^6.7.2"
   },
   "devDependencies": {
