@@ -25,7 +25,7 @@ jobs:
       - run: pnpm it --frozen-lockfile --production false
 
   publish:
-    if: github.ref_name == 'master'
+    if: github.ref_name == 'master' || github.ref_name == 'next'
     needs: [ test ]
     runs-on: ubuntu-latest
     env:
@@ -42,4 +42,4 @@ jobs:
           cache-dependency-path: pnpm-lock.yaml
           registry-url: 'https://registry.npmjs.org'
       - run: pnpm i --frozen-lockfile --production false
-      - run: pnpm publish --recursive --filter="@promise-watch/*" --access=public
+      - run: pnpm publish --recursive --filter="@promise-watch/core" --access=public --tag next
