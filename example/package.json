@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "promise-watch",
     "start": "ts-node src/main.ts"
   },
   "author": "Jason Raimondi",
