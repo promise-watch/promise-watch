@@ -60,12 +60,6 @@ export async function run() {
 }
 ```
 
-## Getting Started
-
-The best way to get started is to use the [starter-template](https://github.com/promise-watch/starter-template). Clone it down and then add your own custom runs to the `runs/` directory.
-
-## Configuration
-
 The default options:
 
 ```typescript
@@ -77,6 +71,28 @@ type RunPageOptions = {
 };
 ```
 
+## Getting Started
+
+The best way to get started is to use the [starter-template](https://github.com/promise-watch/starter-template). Clone it down and then add your own custom runs to the `runs/` directory.
+
+### Create a promise-watch.config.ts
+
+You'll need to create your own config:
+
+```typescript
+type PromiseWatchOptions = {
+  globPath?: string; // defaults to "runs/**/*.{js,ts}"
+  notifiers: Notifier[];
+};
+```
+
+```typescript
+// promise-watch.config.ts
+
+export default {
+  notifiers: [],
+}
+```
 ## Notifiers
 
 Send notifications when errors occur using the following providers:
