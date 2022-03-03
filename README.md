@@ -2,14 +2,13 @@
   	<img height="180" src="https://github.com/jasonraimondi/promise-watch/raw/master/logos/promise-watch-logo-vertical.png" alt="Promise Watch Logo" />
 </h1>
 
-[![Tests](https://github.com/jasonraimondi/promise-watch/actions/workflows/test.yml/badge.svg)](https://github.com/jasonraimondi/promise-watch/actions/workflows/test.yml)
-[![License](https://img.shields.io/github/license/jasonraimondi/promise-watch?color=#31C754)](./LICENSE.md)
-
-[![@promise-watch/core](https://img.shields.io/npm/v/@promise-watch/core?label=%40promise-watch%2Fcore)](https://www.npmjs.com/package/@promise-watch/core)
-[![@promise-watch/axios](https://img.shields.io/npm/v/@promise-watch/axios?label=%40promise-watch%2Faxios)](https://www.npmjs.com/package/@promise-watch/axios)
-[![@promise-watch/pushover](https://img.shields.io/npm/v/@promise-watch/pushover?label=%40promise-watch%2Fpushover)](https://www.npmjs.com/package/@promise-watch/pushover)
-[![@promise-watch/slack](https://img.shields.io/npm/v/@promise-watch/slack?label=%40promise-watch%2Fslack)](https://www.npmjs.com/package/@promise-watch/slack)
-[![@promise-watch/smtp](https://img.shields.io/npm/v/@promise-watch/smtp?label=%40promise-watch%2Fsmtp)](https://www.npmjs.com/package/@promise-watch/smtp)
+[![tests](https://github.com/jasonraimondi/promise-watch/actions/workflows/test.yml/badge.svg)](https://github.com/jasonraimondi/promise-watch/actions/workflows/test.yml)
+[![license](https://img.shields.io/github/license/jasonraimondi/promise-watch?color=#31C754)](./LICENSE.md)
+[![core](https://img.shields.io/npm/v/@promise-watch/core?label=%40promise-watch%2Fcore)](https://www.npmjs.com/package/@promise-watch/core)
+[![axios](https://img.shields.io/npm/v/@promise-watch/axios?label=%40promise-watch%2Faxios)](https://www.npmjs.com/package/@promise-watch/axios)
+[![pushover](https://img.shields.io/npm/v/@promise-watch/pushover?label=%40promise-watch%2Fpushover)](https://www.npmjs.com/package/@promise-watch/pushover)
+[![slack](https://img.shields.io/npm/v/@promise-watch/slack?label=%40promise-watch%2Fslack)](https://www.npmjs.com/package/@promise-watch/slack)
+[![smtp](https://img.shields.io/npm/v/@promise-watch/smtp?label=%40promise-watch%2Fsmtp)](https://www.npmjs.com/package/@promise-watch/smtp)
 
 An Api/E2E monitor that runs promises on intervals and sends notifications on errors. Supports [playwright](https://playwright.dev/) for reliable E2E testing. Has prebuilt [notifiers](#notifiers) for [SMTP](./packages/smtp), [Slack](./packages/slack), and [Pushover](./packages/pushover), and can support any [custom notifier](#custom-notifiers).
 
@@ -87,12 +86,6 @@ Send notifications when errors occur using the following providers:
 * [SlackNotifier](./packages/slack)
 * [SmtpNotifier](./packages/smtp)
 
-```bash
-pnpm add @promise-watch/pushover @promise-watch/slack @promise-watch/smtp
-```
-
-Then in your execute options, add the `PushoverNotifier` to your `errorNotifiers` array.
-
 ```typescript
 import { ConsoleNotifier } from "@promise-watch/core";
 
@@ -118,6 +111,20 @@ export type SendOptions = {
 export type Notifier = {
   sendError(options: SendOptions): Promise<void>;
   sendRecovered(options: SendOptions): Promise<void>;
+}
+```
+
+So you'd implement your own more or less like the following.
+
+```typescript
+export class MyCustomNotifier implements Notifier {
+  async sendError(options: SendOptions) {
+    // handle custom error message
+  }
+  
+  async sendRecovered(options: SendOptions) {
+    // handle custom recovered message
+  }
 }
 ```
 
