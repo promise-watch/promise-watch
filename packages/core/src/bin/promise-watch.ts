@@ -15,11 +15,7 @@ import { executeJobs } from "../execute";
 
   const config = await import(`${dir}/promise-watch.config.ts`);
 
-  const options = { dir, ...config.default };
-
-  console.log(options);
-
-  await executeJobs(options);
+  await executeJobs({ dir, ...config.default });
 })().catch(err => {
   console.error(err);
   process.exit(1);
