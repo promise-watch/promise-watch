@@ -2,21 +2,18 @@ import { chromium } from "playwright";
 import { RunOptions } from "@promise-watch/core";
 
 export const options: RunOptions = {
-  interval: 7.5,
+  interval: 15,
 };
 
 export async function run() {
   const browser = await chromium.launch();
   const page = await browser.newPage();
 
-  const response = await page.goto("https://jasonraimondi.com", { waitUntil: "domcontentloaded" });
-  const status = response?.status() ?? 1000;
+  const response = await page.goto("https://jasonraimondi.com");
 
-  if (status > 399) {
-    throw new Error(`Failed with response code [${status}].`);
+  if (response?.status && response.status() > 399) {
+    throw new Error(`Failed with response code [${response.status()}].`);
   }
-
-  // await page.screenshot({ path: `tmp/screenshots/${new Date().toISOString()}-${basename(__filename)}.jpg` });
 
   await page.close({ runBeforeUnload: true });
   await browser.close();

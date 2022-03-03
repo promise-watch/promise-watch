@@ -1,21 +1,36 @@
-export type RunPage = {
+export type RunPage<T = void> = {
   name: string;
   options: RunOptions;
-  run(): Promise<void>;
+  run(): Promise<T>;
 };
 
-export type RunOptions = {
+export type RunPageOptions = {
   interval: number;
   notifiers?: Notifier[];
   logSuccess?: boolean;
   retryImmediatelyAfterFail?: boolean;
 };
 
-export type ExecuteOptions = {
-  dir: string;
+export type RunOptions = RunPageOptions;
+
+export type PromiseWatchOptions = {
   globPath?: string;
-  notifiers?: Notifier[];
+  notifiers: Notifier[];
+
+  /**
+   * @deprecated
+   * This field is no longer used, T
+   * @todo remove in v2.x
+   */
+  dir?: string;
 };
+
+/**
+ * @deprecated
+ * Use PromiseWatchOptions instead, this will be removed in v2.x
+ * @todo remove in v2.x
+ */
+export type ExecuteOptions = PromiseWatchOptions;
 
 export type SendOptions = {
   title: string;

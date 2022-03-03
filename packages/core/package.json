@@ -1,8 +1,11 @@
 {
   "name": "@promise-watch/core",
-  "version": "1.0.0",
-  "main": "src/index.ts",
+  "version": "1.1.0-next.4",
   "author": "Jason Raimondi <jason@raimondi.us> (https://jasonraimondi.com)",
+  "main": "src/index.ts",
+  "bin": {
+    "promise-watch": "src/bin/promise-watch.ts"
+  },
   "scripts": {
     "test": "jest",
     "build": "tsc",
@@ -13,7 +16,9 @@
     "src"
   ],
   "peerDependencies": {
-    "playwright": "^1.19.1"
+    "playwright": "^1.19.1",
+    "typescript": "^4.0.0",
+    "ts-node": "^10.0.0"
   },
   "dependencies": {
     "glob": "^7.2.0"
@@ -26,6 +31,9 @@
   "publishConfig": {
     "main": "dist/index.js",
     "private": false,
-    "license": "MIT"
+    "license": "MIT",
+    "bin": {
+      "promise-watch": "dist/bin/promise-watch.js"
+    }
   }
 }
