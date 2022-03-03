@@ -22,31 +22,25 @@ Create a `run` directory where you write scripts, set options, then send notific
 Your runs can be anything! It just needs to export an `options: RunOptions` and `run: Promise<void>`.
 
 ```typescript
-// runs/checks-https-jasonraimondi-com.ts
-
 import { chromium } from "playwright";
 import { RunOptions } from "@promise-watch/core";
 
 export const options: RunOptions = {
-  interval: 60, // in seconds
+  interval: 15,
 };
 
-export async function run(): Promise<void> {
+export async function run() {
   const browser = await chromium.launch();
   const page = await browser.newPage();
 
-  const site = "https://jasonraimondi.com";
+  const response = await page.goto("https://jasonraimondi.com");
 
-  const response = await page.goto(site);
-
-  if ((response?.status() ?? 1000) > 399) {
-    throw new Error(`${site} Failed to load!`);
+  if (response?.status && response.status() > 399) {
+    throw new Error(`Failed with response code [${response.status()}].`);
   }
 
   await page.close({ runBeforeUnload: true });
   await browser.close();
-
-  console.log(`success: ${__filename}`);
 }
 ```
 
