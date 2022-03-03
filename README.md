@@ -1,5 +1,5 @@
 <h1 align="center">
-  	<img height="180" src="https://github.com/jasonraimondi/promise-watch/raw/master/logos/promise-watch-logo-vertical.png" alt="Promise Watch Logo" />
+  	<img height="180" src="https://github.com/promise-watch/artwork/raw/master/logos/promise-watch-logo-vertical.png" alt="Promise Watch Logo" />
 </h1>
 
 [![tests](https://github.com/jasonraimondi/promise-watch/actions/workflows/test.yml/badge.svg)](https://github.com/jasonraimondi/promise-watch/actions/workflows/test.yml)
