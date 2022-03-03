@@ -9,7 +9,7 @@
   "author": "Jason Raimondi <jason@raimondi.us> (https://jasonraimondi.com)",
   "dependencies": {
     "@promise-watch/axios": "workspace:^1.0.0",
-    "@promise-watch/core": "workspace:^1.1.0-next.2",
+    "@promise-watch/core": "workspace:^1.1.0-next.4",
     "@promise-watch/pushover": "workspace:^1.0.0",
     "@promise-watch/slack": "workspace:^1.0.0",
     "@promise-watch/smtp": "workspace:^1.0.0",
