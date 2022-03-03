@@ -4,7 +4,7 @@
   "author": "Jason Raimondi <jason@raimondi.us> (https://jasonraimondi.com)",
   "main": "src/index.ts",
   "bin": {
-    "promise-watch": "dist/bin/promise-watch.js"
+    "promise-watch": "src/bin/promise-watch.ts"
   },
   "scripts": {
     "test": "jest",
@@ -31,6 +31,9 @@
   "publishConfig": {
     "main": "dist/index.js",
     "private": false,
-    "license": "MIT"
+    "license": "MIT",
+    "bin": {
+      "promise-watch": "dist/bin/promise-watch.js"
+    }
   }
 }

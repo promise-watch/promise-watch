@@ -45,4 +45,4 @@ jobs:
       - if: github.ref_name == 'master'
         run: pnpm publish --recursive --filter="@promise-watch/*" --access=public
       - if: github.ref_name == 'next'
-        run: pnpm publish --recursive --filter="@promise-watch/*" --access=public --tag next
+        run: pnpm publish --recursive --filter="@promise-watch/*" --access=public --publish-branch next --tag next
