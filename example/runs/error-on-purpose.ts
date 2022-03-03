@@ -7,7 +7,5 @@ export const options: RunOptions = {
 export async function run() {
   if (Math.random() * 100 > 30) {
     throw new Error("this is an error");
-  } else {
-    console.log("SUCCESS");
   }
 }
