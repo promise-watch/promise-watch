@@ -42,4 +42,7 @@ jobs:
           cache-dependency-path: pnpm-lock.yaml
           registry-url: 'https://registry.npmjs.org'
       - run: pnpm i --frozen-lockfile --production false
-      - run: pnpm publish --recursive --filter="@promise-watch/core" --access=public --tag next
+      - if: github.ref_name == 'master'
+        run: pnpm publish --recursive --filter="@promise-watch/*" --access=public
+      - if: github.ref_name == 'next'
+        run: pnpm publish --recursive --filter="@promise-watch/*" --access=public --tag next
