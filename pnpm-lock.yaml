@@ -23,7 +23,7 @@ importers:
   example:
     specifiers:
       '@promise-watch/axios': workspace:^1.0.0
-      '@promise-watch/core': workspace:^1.1.0-next.4
+      '@promise-watch/core': workspace:^1.1.0
       '@promise-watch/pushover': workspace:^1.0.0
       '@promise-watch/slack': workspace:^1.0.0
       '@promise-watch/smtp': workspace:^1.0.0
@@ -51,7 +51,7 @@ importers:
 
   packages/axios:
     specifiers:
-      '@promise-watch/core': workspace:^1.1.0-next.4
+      '@promise-watch/core': workspace:^1.1.0
       axios: ^0.26.0
     dependencies:
       '@promise-watch/core': link:../core
@@ -72,7 +72,7 @@ importers:
 
   packages/pushover:
     specifiers:
-      '@promise-watch/core': workspace:^1.1.0-next.4
+      '@promise-watch/core': workspace:^1.1.0
       pushover-js: ^1.3.1
     dependencies:
       '@promise-watch/core': link:../core
@@ -80,7 +80,7 @@ importers:
 
   packages/slack:
     specifiers:
-      '@promise-watch/core': workspace:^1.1.0-next.4
+      '@promise-watch/core': workspace:^1.1.0
       '@slack/webhook': ^6.1.0
     dependencies:
       '@promise-watch/core': link:../core
@@ -88,7 +88,7 @@ importers:
 
   packages/smtp:
     specifiers:
-      '@promise-watch/core': workspace:^1.1.0-next.4
+      '@promise-watch/core': workspace:^1.1.0
       '@types/nodemailer': ^6.4.4
       nodemailer: ^6.7.2
     dependencies:
