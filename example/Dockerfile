@@ -8,12 +8,12 @@ RUN apt-get update \
     && curl -fsSL 'https://github.com/pnpm/pnpm/releases/download/v6.32.2/pnpm-linuxstatic-x64' -o /usr/local/bin/pnpm \
     && chmod +x /usr/local/bin/pnpm
 
-WORKDIR /app
+WORKDIR /promise-watch
 
-COPY package.json pnpm-lock.yaml /app/
+COPY package.json pnpm-lock.yaml /promise-watch/
 
 RUN pnpm install --production false --frozen-lockfile
 
-COPY promise-watch.config.ts tsconfig.json /app/
+COPY promise-watch.config.ts tsconfig.json /promise-watch/
 
-COPY runs /app/runs
+COPY runs /promise-watch/runs
