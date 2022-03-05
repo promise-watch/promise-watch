@@ -160,6 +160,10 @@ export async function run() {
 }
 ```
 
+## Kubernetes Deployment
+
+See [k8s.yaml](./k8s.yaml) for a example deployment.
+
 ## Caveats
 
 For now, this is not going scale to many runs nicely. I'm not sure the limit, but with enough runs, someone will surely find out for us!
